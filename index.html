@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yicong Song - Personal Academic Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 25px 0 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 4px solid #3498db;
+        }
+        
+        .contact-info {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .publication {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publication:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .pub-authors {
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+        
+        .pub-journal {
+            color: #16a085;
+            margin-bottom: 5px;
+        }
+        
+        .pub-links a {
+            margin-right: 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .news-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .news-date {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yicong Song</h1>
+        <h2>Assistant Professor of Mathematics</h2>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-card">
+                <img src="https://via.placeholder.com/180" alt="Yicong Song" class="profile-img">
+                <h3>Contact Information</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-university"></i> Department of Mathematics</li>
+                    <li><i class="fas fa-map-marker-alt"></i> University of Example</li>
+                    <li><i class="fas fa-envelope"></i> email@example.edu</li>
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-map-pin"></i> Office: Science Building 321</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" class="btn"><i class="fab fa-google"></i> Google Scholar</a>
+                    <a href="#" class="btn"><i class="ai ai-arxiv"></i> arXiv</a>
+                    <a href="#" class="btn"><i class="fas fa-graduation-cap"></i> ORCID</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Quick Links</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-link"></i> <a href="#">CV (PDF)</a></li>
+                    <li><i class="fas fa-book"></i> <a href="#">Research Statement</a></li>
+                    <li><i class="fas fa-chalkboard-teacher"></i> <a href="#">Teaching Statement</a></li>
+                    <li><i class="fas fa-file-pdf"></i> <a href="#">Publications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h3>About Me</h3>
+                <p>I am an Assistant Professor in the Department of Mathematics at the University of Example. My research interests lie in the intersection of partial differential equations and mathematical physics, with a focus on nonlinear waves and integrable systems.</p>
+                <p>I received my Ph.D. in Mathematics from Example University in 2018, under the supervision of Professor Jane Smith. Before joining University of Example, I was a postdoctoral researcher at Example Institute of Technology.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+
+            <div class="section">
+                <h3>Research Interests</h3>
+                <ul>
+                    <li>Partial Differential Equations</li>
+                    <li>Integrable Systems</li>
+                    <li>Nonlinear Waves</li>
+                    <li>Mathematical Physics</li>
+                    <li>Soliton Theory</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>Selected Publications</h3>
+                <div class="publication">
+                    <div class="pub-title">Title of a recent publication on mathematics</div>
+                    <div class="pub-authors">Y. Song, J. Smith, A. Johnson</div>
+                    <div class="pub-journal">Journal of Mathematical Physics, 2023</div>
+                    <div class="pub-links">
+                        <a href="#"><i class="far fa-file-pdf"></i> PDF</a>
+                        <a href="#"><i class="fas fa-external-link-alt"></i> Journal</a>
+                        <a href="#"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="pub-title">Another publication with a longer title that spans multiple lines</div>
+                    <div class="pub-authors">Y. Song, M. Brown</div>
+                    <div class="pub-journal">SIAM Journal on Applied Mathematics, 2022</div>
+                    <div class="pub-links">
+                        <a href="#"><i class="far fa-file-pdf"></i> PDF</a>
+                        <a href="#"><i class="fas fa-external-link-alt"></i> Journal</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="pub-title">Important research work in mathematics</div>
+                    <div class="pub-authors">Y. Song, R. Davis, K. Wilson</div>
+                    <div class="pub-journal">Proceedings of the Royal Society A, 2021</div>
+                    <div class="pub-links">
+                        <a href="#"><i class="far fa-file-pdf"></i> PDF</a>
+                        <a href="#"><i class="fas fa-external-link-alt"></i> Journal</a>
+                    </div>
+                </div>
+
+                <a href="#" class="btn">View All Publications</a>
+            </div>
+
+            <div class="section">
+                <h3>News & Updates</h3>
+                <div class="news-item">
+                    <span class="news-date">May 2023:</span> Gave an invited talk at the International Conference on Mathematics.
+                </div>
+                <div class="news-item">
+                    <span class="news-date">March 2023:</span> Paper accepted to Journal of Mathematical Physics.
+                </div>
+                <div class="news-item">
+                    <span class="news-date">January 2023:</span> Received the Young Researcher Award from the Mathematics Society.
+                </div>
+                <div class="news-item">
+                    <span class="news-date">September 2022:</span> Started a new research project on nonlinear wave equations.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Yicong Song | Last updated: June 2023</p>
+        <p>This website is hosted on GitHub Pages</p>
+    </footer>
+
+    <script>
+        // Simple JavaScript to show current year in footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const footer = document.querySelector('footer p');
+            footer.textContent = footer.textContent.replace('2023', currentYear);
+        });
+    </script>
+</body>
+</html>
