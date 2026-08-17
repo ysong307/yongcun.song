@@ -453,22 +453,34 @@
 
     .topics li {
       position: relative;
-      min-height: 90px;
-      padding: 23px 25px 22px 51px;
+      overflow: hidden;
       border: 1px solid rgb(204 228 236 / 24%);
       background: rgb(255 255 255 / 5%);
-      color: #fffdf9;
-      font-family: var(--serif);
-      font-size: 1.27rem;
       transition: background-color 160ms ease, transform 160ms ease;
     }
 
-    .topics li:hover {
+    .topics li:hover,
+    .topics li.is-active {
       background: rgb(255 255 255 / 10%);
       transform: translateY(-2px);
     }
 
-    .topics li::before {
+    .topic-button {
+      display: block;
+      width: 100%;
+      min-height: 90px;
+      padding: 23px 25px 22px 51px;
+      color: #fffdf9;
+      border: 0;
+      background: transparent;
+      font-family: var(--serif);
+      font-size: 1.27rem;
+      line-height: 1.25;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .topic-button::before {
       position: absolute;
       top: 31px;
       left: 24px;
@@ -477,6 +489,26 @@
       content: "";
       border: 1px solid #d7b879;
       transform: rotate(45deg);
+    }
+
+    .topic-button::after {
+      position: absolute;
+      right: 23px;
+      bottom: 20px;
+      color: #d9b97b;
+      content: "+";
+      font-family: var(--sans);
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1;
+      transition: transform 160ms ease;
+    }
+
+    .topic-button[aria-expanded="true"]::after { transform: rotate(45deg); }
+
+    .topic-button:focus-visible {
+      outline: 3px solid #f8f3e9;
+      outline-offset: -6px;
     }
 
     .research-note {
@@ -498,6 +530,82 @@
     }
 
     .research-note p { margin: 0; }
+
+    .research-prompt {
+      margin: 18px 0 0 206px;
+      color: #b9d2de;
+      font-size: 0.91rem;
+    }
+
+    .topic-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 33px;
+      margin: 18px 0 0 206px;
+      padding: 30px 32px;
+      border: 1px solid rgb(204 228 236 / 28%);
+      border-left: 3px solid #d7b879;
+      color: #d8e7ee;
+      background: rgb(255 255 255 / 7%);
+    }
+
+    .topic-panel[hidden] { display: none; }
+
+    .topic-panel-kicker {
+      margin-bottom: 9px;
+      color: #d9b97b;
+      font-size: 0.74rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .topic-panel h3 {
+      margin-bottom: 10px;
+      color: #fffdf9;
+      font-family: var(--serif);
+      font-size: 1.62rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .topic-panel p { margin: 0; color: #c8dbe5; }
+
+    .topic-detail-list {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .topic-detail-list li {
+      position: relative;
+      padding-left: 19px;
+      color: #edf5f8;
+      font-size: 0.94rem;
+    }
+
+    .topic-detail-list li::before {
+      position: absolute;
+      top: 0.72em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      content: "";
+      background: #d7b879;
+      border-radius: 50%;
+    }
+
+    .topic-panel .text-link {
+      grid-column: 1 / -1;
+      justify-self: start;
+      margin-top: -4px;
+      color: #f0d39b;
+    }
+
+    .topic-panel .text-link:hover { color: #fffdf9; }
 
     .publication-list {
       max-width: 920px;
@@ -763,6 +871,8 @@
       .research-copy,
       .topics,
       .research-note,
+      .research-prompt,
+      .topic-panel,
       .publication-list,
       .timeline,
       .teaching-grid,
@@ -771,6 +881,7 @@
       .section-action { margin-left: 0; }
       .research-copy { margin-top: 23px; }
       .topics { grid-template-columns: 1fr; }
+      .topic-panel { grid-template-columns: 1fr; gap: 22px; padding: 27px 25px; }
       .about-grid { grid-template-columns: 1fr; }
       .teaching-grid { grid-template-columns: 1fr; }
       .resource-grid { grid-template-columns: 1fr; }
@@ -864,13 +975,75 @@
           <p class="section-label">Research</p>
           <h2 class="section-title" id="research-title">A computational view of complex mathematical problems.</h2>
         </div>
-        <p class="research-copy">I develop and analyse methods that combine optimization, control, numerical computation, and modern learning techniques.</p>
+        <p class="research-copy">I develop and analyse methods that combine optimization, control, numerical computation, and modern learning techniques. Select an area to see its current research scope.</p>
         <ul class="topics" aria-label="Research areas">
-          <li>Scientific Computing</li>
-          <li>Machine Learning</li>
-          <li>Optimal Control</li>
-          <li>Optimization</li>
+          <li><button class="topic-button" id="topic-scientific-computing-button" type="button" aria-expanded="false" aria-controls="topic-scientific-computing" data-topic="scientific-computing">Scientific Computing</button></li>
+          <li><button class="topic-button" id="topic-machine-learning-button" type="button" aria-expanded="false" aria-controls="topic-machine-learning" data-topic="machine-learning">Machine Learning</button></li>
+          <li><button class="topic-button" id="topic-optimal-control-button" type="button" aria-expanded="false" aria-controls="topic-optimal-control" data-topic="optimal-control">Optimal Control</button></li>
+          <li><button class="topic-button" id="topic-optimization-button" type="button" aria-expanded="false" aria-controls="topic-optimization" data-topic="optimization">Optimization</button></li>
         </ul>
+        <p class="research-prompt">Click a research area to reveal its themes and related record.</p>
+
+        <article class="topic-panel" id="topic-scientific-computing" aria-labelledby="topic-scientific-computing-button" hidden>
+          <div>
+            <p class="topic-panel-kicker">Scientific Computing</p>
+            <h3>Reliable computation for complex systems.</h3>
+            <p>Numerical analysis and computational methods for models governed by partial differential equations and dynamical systems.</p>
+          </div>
+          <ul class="topic-detail-list">
+            <li>Optimal control of PDEs and control of dynamical systems</li>
+            <li>Inverse problems</li>
+            <li>Shape design</li>
+            <li>Physics simulations</li>
+          </ul>
+          <a class="text-link" href="research/#publications-scientific-computing">View scientific computing publications <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="topic-panel" id="topic-machine-learning" aria-labelledby="topic-machine-learning-button" hidden>
+          <div>
+            <p class="topic-panel-kicker">Machine Learning</p>
+            <h3>Learning methods with mathematical structure.</h3>
+            <p>Data-driven and scientifically informed learning methods, together with the analysis needed to make them reliable for computation.</p>
+          </div>
+          <ul class="topic-detail-list">
+            <li>Scientific machine learning: physics-informed learning, optimization-informed neural networks, and operator learning</li>
+            <li>Mathematics of machine learning: approximation and generalization theory, convergence, and error estimates for SciML</li>
+            <li>Federated learning</li>
+            <li>Control and machine learning</li>
+          </ul>
+          <a class="text-link" href="research/#publications-scientific-machine-learning">View machine-learning publications <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="topic-panel" id="topic-optimal-control" aria-labelledby="topic-optimal-control-button" hidden>
+          <div>
+            <p class="topic-panel-kicker">Optimal Control</p>
+            <h3>From PDE models to computable decisions.</h3>
+            <p>Methods for the analysis and numerical solution of constrained control problems, with an emphasis on PDEs, dynamics, and learning-enabled algorithms.</p>
+          </div>
+          <ul class="topic-detail-list">
+            <li>PDE-constrained optimal control</li>
+            <li>Control of dynamical systems</li>
+            <li>State- and control-constrained problems</li>
+            <li>Learning and operator-learning methods for nonsmooth PDE control</li>
+          </ul>
+          <a class="text-link" href="research/#optimal-control">Explore the optimal-control research path <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="topic-panel" id="topic-optimization" aria-labelledby="topic-optimization-button" hidden>
+          <div>
+            <p class="topic-panel-kicker">Optimization</p>
+            <h3>Algorithms for structured mathematical problems.</h3>
+            <p>Optimization theory and algorithms for large-scale, nonsmooth, and constrained problems arising in computation, control, and learning.</p>
+          </div>
+          <ul class="topic-detail-list">
+            <li>Stochastic optimization for large-scale nonsmooth problems</li>
+            <li>Operator splitting methods</li>
+            <li>Primal-dual and ADMM-type algorithms</li>
+            <li>Proximal and quasi-Newton methods</li>
+          </ul>
+          <a class="text-link" href="research/#publications-optimization">View optimization publications <span aria-hidden="true">→</span></a>
+        </article>
+
         <div class="research-note">
           <span>COOL</span>
           <p><strong>Control, Optimization, and Learning.</strong> A common thread across the research programme.</p>
@@ -930,7 +1103,7 @@
           <a class="publication-link" href="https://arxiv.org/abs/2308.06709" target="_blank" rel="noreferrer" aria-label="Open The Hard-Constraint PINNs for Interface Optimal Control Problems">Read <span aria-hidden="true">↗</span></a>
         </article>
       </div>
-      <p class="section-action"><a class="text-link" href="https://sites.google.com/view/ycsong-math/research" target="_blank" rel="noreferrer">Browse the complete research record <span aria-hidden="true">→</span></a></p>
+      <p class="section-action"><a class="text-link" href="research/">Browse the complete research record <span aria-hidden="true">→</span></a></p>
     </section>
 
     <section class="section wrap" id="experience" aria-labelledby="experience-title">
@@ -1036,6 +1209,33 @@
     const now = new Date();
     document.querySelector('#year').textContent = String(now.getFullYear());
     document.querySelector('#updated').textContent = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(now);
+
+    const topicButtons = document.querySelectorAll('.topic-button');
+    const topicPanels = document.querySelectorAll('.topic-panel');
+    const topicPrompt = document.querySelector('.research-prompt');
+
+    function setActiveTopic(topic, shouldOpen) {
+      topicButtons.forEach((button) => {
+        const isActive = shouldOpen && button.dataset.topic === topic;
+        button.setAttribute('aria-expanded', String(isActive));
+        button.closest('li').classList.toggle('is-active', isActive);
+      });
+
+      topicPanels.forEach((panel) => {
+        panel.hidden = !(shouldOpen && panel.id === `topic-${topic}`);
+      });
+
+      if (topicPrompt) {
+        topicPrompt.hidden = shouldOpen;
+      }
+    }
+
+    topicButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        setActiveTopic(button.dataset.topic, !isOpen);
+      });
+    });
   </script>
 </body>
 </html>
