@@ -451,16 +451,16 @@
       list-style: none;
     }
 
-    .details li {
+    .details > li {
       position: relative;
       padding: 0 0 18px 22px;
       color: var(--muted);
       font-size: 0.94rem;
     }
 
-    .details li:last-child { padding-bottom: 0; }
+    .details > li:last-child { padding-bottom: 0; }
 
-    .details li::before {
+    .details > li::before {
       position: absolute;
       top: 0.73em;
       left: 0;
@@ -478,6 +478,15 @@
       font-size: 0.84rem;
       letter-spacing: 0.02em;
     }
+
+    .detail-items {
+      margin: 5px 0 0;
+      padding-left: 1.25em;
+      list-style: disc;
+    }
+
+    .detail-items li { padding: 0 0 5px; }
+    .detail-items li:last-child { padding-bottom: 0; }
 
     .details a {
       color: var(--blue);
@@ -1018,22 +1027,32 @@
     <section class="section wrap" id="about" aria-labelledby="about-title">
       <div class="section-heading">
         <p class="section-label">About</p>
-        <h2 class="section-title" id="about-title">Yongcun Song develops mathematical and computational methods at the intersection of optimization, optimal control, scientific computing and machine learning.</h2>
+        <h2 class="section-title" id="about-title">Mathematical and computational methods at the intersection of optimization, optimal control, scientific computing and machine learning.</h2>
       </div>
       <div class="about-grid">
         <div class="copy">
-          <p class="lead">Exploring the interplay between control, optimization and machine learning.</p>
-          <p>My work includes optimal control of systems governed by ODEs and PDEs, numerical and deep learning methods for scientific computing, and optimization in infinite-dimensional and geometric settings.</p>
-          <p>I also study federated and privacy-preserving learning, including efficient distributed optimization, data reconstruction attacks and optimal privacy allocation. My current research also includes using control theory to investigate neural ODEs and network architecture, and designing and analyzing neural PDE solvers. These directions offer doctoral research opportunities across mathematics, computation and AI.</p>
+          <p>Yongcun Song develops mathematical and computational methods at the intersection of optimization, optimal control, scientific computing and machine learning. His work includes optimal control of systems governed by ODEs and PDEs, numerical and deep learning methods for scientific computing, and optimization in infinite-dimensional and geometric settings.</p>
+          <p>He also studies federated and privacy-preserving learning, including efficient distributed optimization, data reconstruction attacks and optimal privacy allocation. His current research also includes using control theory to investigate neural ODEs and network architecture, and designing and analyzing neural PDE solvers. These directions offer doctoral research opportunities across mathematics, computation and AI.</p>
           <p><strong>Academic profile.</strong> I received my PhD in Mathematics from the University of Hong Kong in 2021. Before joining NTU, I was an Assistant Professor at City University of Hong Kong and an Alexander von Humboldt Research Fellow at Friedrich-Alexander-Universität Erlangen–Nürnberg.</p>
         </div>
         <aside class="info-panel" aria-label="Research and curriculum vitae at a glance">
           <h3>Research &amp; CV at a glance</h3>
           <ul class="details">
-            <li><b>Research interests</b>Optimal control of ODEs and PDEs; Numerical optimization and scientific computing; Scientific machine learning; Control and optimization for machine learning.</li>
+            <li><b>Research interests</b>
+              <ul class="detail-items">
+                <li>Optimal control of ODEs and PDEs</li>
+                <li>Numerical optimization and scientific computing</li>
+                <li>Scientific machine learning</li>
+                <li>Control and optimization for machine learning</li>
+              </ul>
+            </li>
             <li><b>Current directions</b>Federated and privacy-preserving learning; neural ODEs and network architecture; designing and analyzing neural PDE solvers.</li>
-            <li><b>Academic path</b>Assistant Professor, Division of Mathematical Sciences, School of Physical and Mathematical Sciences, Nanyang Technological University; PhD in Mathematics, University of Hong Kong, 2021; Assistant Professor at City University of Hong Kong; Alexander von Humboldt Research Fellow at Friedrich-Alexander-Universität Erlangen–Nürnberg.</li>
-            <li><b>Selected distinctions</b>Alexander von Humboldt Research Fellowship (2022); Hong Kong Mathematical Society Best Thesis Award (2023).</li>
+            <li><b>Selected distinctions</b>
+              <ul class="detail-items">
+                <li>Alexander von Humboldt Research Fellowship (2022)</li>
+                <li>Hong Kong Mathematical Society Best Thesis Award (2023)</li>
+              </ul>
+            </li>
             <li><b>Email</b><a href="mailto:yongcun.song@ntu.edu.sg">yongcun.song@ntu.edu.sg</a></li>
           </ul>
         </aside>
